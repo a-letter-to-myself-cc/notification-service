@@ -13,7 +13,3 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 # 모든 Django 앱에서 tasks.py 자동 등록
 app.autodiscover_tasks()
-
-@app.task(bind=True)
-def debug_task(self):
-    print(f'Request: {self.request!r}')
