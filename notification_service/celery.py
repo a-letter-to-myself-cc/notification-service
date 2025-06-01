@@ -11,6 +11,13 @@ app = Celery('notification_service')
 # settings.py에서 CELERY로 시작하는 항목 읽어옴
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
+
+# task_routes 오버라이드
+app.conf.task_routes = {
+    'notify.tasks.send_notification': {'queue': 'notification_queue'},
+}
+
+
 # 모든 Django 앱에서 tasks.py 자동 등록
 app.autodiscover_tasks()
 
