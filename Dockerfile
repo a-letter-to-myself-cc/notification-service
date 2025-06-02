@@ -29,5 +29,5 @@ ENV DB_NAME=$DB_NAME \
     EMAIL_HOST_USER=$EMAIL_HOST_USER \
     EMAIL_HOST_PASSWORD=$EMAIL_HOST_PASSWORD
 
-# Celery worker 실행
-CMD ["celery", "-A", "notification_service", "worker", "--loglevel=info"] 
+# Django 서버 실행
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8005"]

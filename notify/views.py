@@ -8,7 +8,7 @@ import json
 @require_POST
 def email_notification_api(request):
     try:
-        data = json.loads(request.body)
+        data = json.loads(request.body.decode())  # bytes → str로 디코딩 후 파싱
         email = data["email"]
         username = data["username"]
         time = data["time"]
