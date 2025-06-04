@@ -4,7 +4,7 @@ services:
   notification-service:
     build: .
     container_name: notification-service
-    restart: always
+    command: python manage.py runserver 0.0.0.0:8005
     ports:
       - "8005:8005"
     networks:
@@ -12,6 +12,8 @@ services:
       - auth-share-net
     env_file:
       - .env
+    depends_on:
+      - notification-worker
 
   notification-worker:
     build: .
@@ -20,7 +22,10 @@ services:
     networks:
       - schedule-internal-net
       - auth-share-net
+    env_file:
+      - .env
 
+      
 networks:
   schedule-internal-net:
     external: true
