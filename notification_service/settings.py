@@ -12,6 +12,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.contenttypes',
+    'django.contrib.auth',
     'notify',
 ]
 
@@ -54,7 +55,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Celery
 #CELERY_BROKER_URL = 'amqp://localhost' # Celery가 메시지 브로커로 RabbitMQ를 쓰겠다고 지정
-CELERY_BROKER_URL='amqp://guest:guest@rabbitmq:5672//'
+CELERY_BROKER_URL='amqp://guest:guest@rabbitmq-service:5672//'
 #amqp:// → RabbitMQ 프로토콜임
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
